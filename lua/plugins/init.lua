@@ -27,6 +27,20 @@ return {
     'mrcjkb/rustaceanvim',
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
+    config = function(_,_)
+      vim.g.rustaceanvim = {
+        tools = {
+        },
+        server = {
+          on_attach = function (client, bufnr)
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>f", function ()
+              vim.lsp.buf.format({async = true})
+            end, { buffer = bufnr })
+          end,
+        }
+      }
+    end
   },
 
   {
