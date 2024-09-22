@@ -39,3 +39,5 @@ map("n", "<Leader>gn", "<cmd>Gitsigns next_hunk<CR>")
 map("n", "<Leader>ga", "<cmd>Gitsigns stage_hunk<CR>")
 map("n", "<Leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>")
 map("n", "<Leader>gp", "<cmd>Gitsigns preview_hunk<CR>")
+
+map("v", "<Leader>d", ":t-<CR>", { desc = "Duplicate selection" })
