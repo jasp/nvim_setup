@@ -9,14 +9,7 @@ map("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
-map("n", "grn", function ()
-  vim.lsp.buf.rename()
-end)
+map("n", "grn", vim.lsp.buf.rename)
+map("n", "gra", vim.lsp.buf.code_action)
+map("n", "grr", vim.lsp.buf.references)
 
-map("n", "gra", function ()
-  vim.lsp.buf.code_action()
-end)
-
-map("n", "grr", function ()
-  vim.lsp.buf.references()
-end)
