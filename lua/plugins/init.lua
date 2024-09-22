@@ -65,7 +65,16 @@ return {
     tag = 'stable',
     event = { "BufRead Cargo.toml" },
     config = function()
-      require('crates').setup()
+      require('crates').setup {
+        completion = {
+          cmp = {
+            enabled = true
+          },
+        },
+      }
+      require("cmp").setup.buffer({
+        sources = { { name = "crates" } }
+      })
     end,
   },
 
