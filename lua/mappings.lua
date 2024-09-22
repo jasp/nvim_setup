@@ -20,11 +20,11 @@ end)
 -- Debugger commands
 -- yoink from here: https://github.com/letsgetrusty/neovim-rust/blob/main/lua/mappings.lua
 local dap = require('dap')
-map("n", "<Leader>dl", dap.step_into, { desc = "Debugger step into"})
-map("n", "<Leader>dj", dap.step_over, { desc = "Debugger step over"})
-map("n", "<Leader>dk", dap.step_out, { desc = "Debugger step out"})
-map("n", "<Leader>dc", dap.continue, { desc = "Debugger continue"})
-map("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Debugger tobble breakpoint"})
+map("n", "<Leader>dl", dap.step_into, { desc = "Debugger step into" })
+map("n", "<Leader>dj", dap.step_over, { desc = "Debugger step over" })
+map("n", "<Leader>dk", dap.step_out, { desc = "Debugger step out" })
+map("n", "<Leader>dc", dap.continue, { desc = "Debugger continue" })
+map("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Debugger tobble breakpoint" })
 map("n",
   "<Leader>dd",
   function ()
@@ -32,6 +32,10 @@ map("n",
   end,
   { desc = "Debugger set conditional breakpoint"}
 )
-map("n", "<Leader>de", dap.terminate, { desc = "Debugger reset"})
-map("n", "<Leader>dr", dap.run_last, { desc = "Debugger run last"})
+map("n", "<Leader>de", dap.terminate, { desc = "Debugger reset" })
+map("n", "<Leader>dr", dap.run_last, { desc = "Debugger run last" })
 
+map("n", "<Leader>gn", "<cmd>Gitsigns next_hunk<CR>")
+map("n", "<Leader>ga", "<cmd>Gitsigns stage_hunk<CR>")
+map("n", "<Leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>")
+map("n", "<Leader>gp", "<cmd>Gitsigns preview_hunk<CR>")
