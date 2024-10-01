@@ -36,7 +36,7 @@ return {
       local this_os = vim.loop.os_uname().sysname
 
       -- windows fixes
-      if this_os == 'Windows' then
+      if string.sub(this_os, 1, 7) == 'Windows' then
         extension_path = codelldb:get_install_path() .. '\\extension\\'
         codelldb_path = extension_path .. "adapter\\codelldb.exe"
         liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
