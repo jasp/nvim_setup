@@ -54,7 +54,12 @@ return {
         },
         server = {
           on_attach = function (_, bufnr)
-            vim.keymap.set("n", "dt", "RustLsp testables", {buffer = bufnr})
+            vim.keymap.set("n", "grt", "<cmd>RustLsp testables<cr>", {buffer = bufnr})
+            vim.keymap.set('n', '<Leader>a', '<Plug>RustHoverAction')
+            vim.keymap.set('n', '<Leader>mj', '<cmd>RustLsp moveItem down<cr>')
+            vim.keymap.set('n', '<Leader>mk', '<cmd>RustLsp moveItem up<cr>')
+            vim.keymap.set('n', ']r', '<cmd>RustLsp relatedDiagnostics<cr>')
+            vim.keymap.set('n', '<Leader>.', '<cmd>RustLsp codeAction<cr>')
           end,
         }
       }
