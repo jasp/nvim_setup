@@ -47,3 +47,5 @@ map("n", "<Leader>tr", require("neotest").run.run, { desc = "Run current test" }
 map("n", "<Leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", { desc = "Run all tests in current file" })
 map("n", "<Leader>ts", require("neotest").summary.open, { desc = "Show test summary" })
 map("n", "<Leader>tc", require("neotest").summary.close, { desc = "Hide test summary" })
+
+map("n", "<Leader>i", "<cmd>RustLsp renderDiagnostic<CR>")
