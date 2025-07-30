@@ -26,19 +26,18 @@ return {
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^5', -- Recommended
+    version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
     config = function(_,_)
-      local mason_registry = require('mason-registry')
-      local codelldb = mason_registry.get_package('codelldb')
-      local extension_path = codelldb:get_install_path() .. '/extension/'
+      local codelldb = vim.fn.expand "$MASON/packages/codelldb"
+      local extension_path = codelldb .. '/extension/'
       local codelldb_path = extension_path .. 'adapter/codelldb'
       local liblldb_path = extension_path .. 'lldb/lib/liblldb'
       local this_os = vim.loop.os_uname().sysname
 
       -- windows fixes
       if string.sub(this_os, 1, 7) == 'Windows' then
-        extension_path = codelldb:get_install_path() .. '\\extension\\'
+        extension_path = codelldb .. '\\extension\\'
         codelldb_path = extension_path .. "adapter\\codelldb.exe"
         liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
       else
