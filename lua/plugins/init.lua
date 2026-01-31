@@ -19,7 +19,7 @@ return {
       ensure_installed = {
         "vim", "lua", "vimdoc",
         "html", "css", "rust",
-        "c_sharp"
+        "c_sharp", "slint"
       },
     },
   },
