@@ -26,10 +26,11 @@ return {
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
+    version = '^7', -- Recommended
     lazy = false, -- This plugin is already lazy
     config = function(_,_)
-      local codelldb = vim.fn.expand "$MASON/packages/codelldb"
+      local codelldb = vim.fn.stdpath("data") .. "/mason/packages/codelldb"
+      -- local codelldb = vim.fn.expand "$MASON/packages/codelldb"
       local extension_path = codelldb .. '/extension/'
       local codelldb_path = extension_path .. 'adapter/codelldb'
       local liblldb_path = extension_path .. 'lldb/lib/liblldb'
@@ -95,45 +96,87 @@ return {
 
   {
     'mfussenegger/nvim-dap',
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+    },
     config = function ()
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.before.attach.dapui_config = function ()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function ()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function ()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function ()
-        dapui.close()
-      end
-    end
+      require "configs.nvim-dap"
+    end,
+    event = "VeryLazy",
   },
 
   {
     'rcarriga/nvim-dap-ui',
     dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
     config = function()
-      require("dapui").setup()
+      require "configs.nvim-dap-ui"
     end,
   },
 
+  { "nvim-neotest/nvim-nio" },
+
   {
     "nvim-neotest/neotest",
+    requires = {
+      {
+        "Issafalcon/neotest-dotnet",
+      }
+    },
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter"
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
       require('neotest').setup {
         adapters = {
-          require('rustaceanvim.neotest')
+          require('rustaceanvim.neotest'),
+          require("neotest-dotnet")({
+            -- discovery_root = "solution",
+          }),
         },
     }
     end,
+  },
+
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
+      ensure_installed = {
+        "clangd",
+        "codelldb",
+        "csharp-language-server",
+        "csharpier",
+        "css-lsp",
+        "html-lsp",
+        "lua-language-server",
+        "omnisharp",
+        "prettier",
+        "rust-analyzer",
+        "slint-lsp",
+        "stylua",
+        "roslyn",
+      },
+    },
+  },
+
+  {
+    "seblyng/roslyn.nvim",
+    ft = { "cs" },
+    opts = {
+    },
+  },
+
+  {
+    "Issafalcon/neotest-dotnet",
+    lazy = false,
+    dependencies = {
+      "nvim-neotest/neotest",
+    },
   },
 }

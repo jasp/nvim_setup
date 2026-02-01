@@ -26,7 +26,7 @@ map("n", "<Leader>dl", dap.step_into, { desc = "Debugger step into" })
 map("n", "<Leader>dj", dap.step_over, { desc = "Debugger step over" })
 map("n", "<Leader>dk", dap.step_out, { desc = "Debugger step out" })
 map("n", "<Leader>dc", dap.continue, { desc = "Debugger continue" })
-map("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Debugger tobble breakpoint" })
+map("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Debugger toggle breakpoint" })
 map("n",
   "<Leader>dd",
   function ()
@@ -35,7 +35,16 @@ map("n",
   { desc = "Debugger set conditional breakpoint"}
 )
 map("n", "<Leader>de", dap.terminate, { desc = "Debugger reset" })
-map("n", "<Leader>dr", dap.run_last, { desc = "Debugger run last" })
+map("n", "<Leader>df", dap.run_last, { desc = "Debugger run last" })
+map("n", "<Leader>dr", dap.repl.open, { desc = "Debugger start repl" })
+map("n", "<Leader>dt", "<Cmd>lua require('neotest').run.run({strategy = 'dap'})<CR>", { desc = "Debug current test"})
+
+-- For when I forget where I am
+map("n", "<F5>", dap.continue, { silent = true })
+map("n", "<F8>", dap.step_out, { silent = true })
+map("n", "<F9>", dap.toggle_breakpoint, { silent = true })
+map("n", "<F10>", dap.step_over, { silent = true })
+map("n", "<F11>", dap.step_into, { silent = true })
 
 map("n", "<Leader>gn", "<cmd>Gitsigns next_hunk<CR>")
 map("n", "<Leader>ga", "<cmd>Gitsigns stage_hunk<CR>")
