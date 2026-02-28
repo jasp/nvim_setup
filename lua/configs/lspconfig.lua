@@ -2,6 +2,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd", "csharp_ls", "rust_analyzer", "slint_lsp", "roslyn" }
+local servers = { "html", "cssls", "clangd", "csharp_ls", "slint_lsp", "roslyn" }
 vim.lsp.enable(servers)
 vim.lsp.inlay_hint.enable()
