@@ -167,7 +167,8 @@ return {
 
   {
     "seblyng/roslyn.nvim",
-    ft = { "cs" },
+    lazy = false,
+    ft = { "cs", "razor" },
     opts = {
     },
   },
