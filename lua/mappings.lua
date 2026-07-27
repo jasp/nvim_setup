@@ -18,6 +18,7 @@ map("n", "gi", vim.lsp.buf.implementation, { desc = "Show implementations" })
 map("n", "<leader>f", function ()
   vim.lsp.buf.format({async = true})
 end)
+map("n", "grs", vim.lsp.buf.document_symbol, { desc = "List all symbols in buffer"})
 
 -- Debugger commands
 -- yoink from here: https://github.com/letsgetrusty/neovim-rust/blob/main/lua/mappings.lua
